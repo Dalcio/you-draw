@@ -1,0 +1,16 @@
+import { Button } from "@mantine/core";
+import { VideoIcon } from "@modulz/radix-icons";
+
+import Link from "next/link";
+
+export function LibraryBtn() {
+  return (
+    <>
+      <Link href="library">
+        <Button size="md" variant="filled" leftIcon={<VideoIcon />}>
+          Library
+        </Button>
+      </Link>
+    </>
+  );
+}
