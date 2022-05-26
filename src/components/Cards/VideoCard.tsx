@@ -2,8 +2,6 @@ import {
   Card,
   Image,
   Text,
-  Badge,
-  Button,
   useMantineTheme,
   Stack,
   Box,

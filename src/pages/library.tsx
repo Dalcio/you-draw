@@ -1,7 +1,7 @@
-export default function CollectionsPage() {
+export default function LibraryPage() {
   return (
     <>
-      <h1>Elcome to collections Page</h1>
+      <h1>Welcome to Library Page Page</h1>
     </>
   );
 }

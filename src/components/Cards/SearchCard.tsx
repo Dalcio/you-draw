@@ -7,30 +7,32 @@ import {
   useMantineTheme,
   Stack,
   Box,
-  Skeleton
+  Skeleton,
+  MantineShadow
 } from "@mantine/core";
 import Link from "next/link";
 
-type SearchCardProps = {
+export type SearchCardProps = {
   thumbnail?: string;
   title?: string;
   channelName?: string;
   channelAvatar?: string;
   videUrl?: string;
   desc?: string;
+  shadow?: MantineShadow | undefined;
   duration?: string;
 };
 
-function SearchCardLoading() {
+function SearchCardLoading({ shadow }: { shadow?: MantineShadow | undefined }) {
   const theme = useMantineTheme();
 
   return (
     <Card
-      shadow="sm"
-      p="lg"
+      shadow={shadow}
+      p={0}
       sx={(theme) => ({
+        width: "100%",
         maxWidth: 340,
-        marginTop: theme.spacing.sm,
         "&:hover": {
           cursor: "pointer",
           opacity: 0.8
@@ -52,18 +54,16 @@ function SearchCardLoading() {
         </Badge>
       </Card.Section>
 
-      <Stack
-        style={{
-          flexDirection: "row",
-          marginBottom: 5,
-          marginTop: theme.spacing.sm
-        }}
-      >
+      <Stack p="md" style={{ flexDirection: "row" }}>
         <Skeleton height={30} circle mb="sm" animate />
         <Box style={{ flexGrow: 1 }}>
           <Skeleton height={theme.spacing.lg} animate />
           <Skeleton height={2 * theme.spacing.lg} mt="sm" animate />
         </Box>
+      </Stack>
+
+      <Stack p="md" pt={0}>
+        <Skeleton height={2 * theme.spacing.lg} />
       </Stack>
     </Card>
   );
@@ -75,6 +75,7 @@ export function SearchCard({
   title,
   channelName,
   desc,
+  shadow = "sm",
   duration
 }: SearchCardProps) {
   const theme = useMantineTheme();
@@ -87,12 +88,20 @@ export function SearchCard({
       desc &&
       duration && (
         <Card
-          shadow="sm"
-          p="lg"
-          style={{ maxWidth: 340, marginTop: theme.spacing.sm }}
+          shadow={shadow}
+          style={{
+            width: "100%",
+            maxWidth: 340,
+            marginTop: 0
+          }}
+          p={0}
         >
-          <Card.Section style={{ position: "relative" }}>
-            <Image src={thumbnail} height={160} alt={title} radius="md" />
+          <Card.Section
+            style={{
+              position: "relative"
+            }}
+          >
+            <Image src={thumbnail} height={160} alt={title} radius={0} />
             <Badge
               variant="filled"
               radius="md"
@@ -112,6 +121,7 @@ export function SearchCard({
               marginBottom: 5,
               marginTop: theme.spacing.sm
             }}
+            p="md"
           >
             <Image
               src={channelAvatar}
@@ -121,7 +131,12 @@ export function SearchCard({
               radius="lg"
             />
             <Box>
-              <Text size="sm" style={{ color: theme.colors.gray[7] }}>
+              <Text
+                size="sm"
+                style={{
+                  color: theme.colors.gray[7]
+                }}
+              >
                 {channelName}
               </Text>
               <Text weight={500}>{title}</Text>
@@ -132,17 +147,13 @@ export function SearchCard({
               )}
             </Box>
           </Stack>
-
-          <Link href="">
-            <Button
-              variant="light"
-              color="blue"
-              fullWidth
-              style={{ marginTop: 14 }}
-            >
-              Draw on
-            </Button>
-          </Link>
+          <Stack p="md" pt={0}>
+            <Link href="">
+              <Button color="blue" fullWidth>
+                Draw on
+              </Button>
+            </Link>
+          </Stack>
         </Card>
       )) || <SearchCardLoading />
   );
