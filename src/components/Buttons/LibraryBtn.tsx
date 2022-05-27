@@ -7,7 +7,7 @@ export function LibraryBtn() {
   return (
     <>
       <Link href="library">
-        <Button size="md" variant="filled" leftIcon={<VideoIcon />}>
+        <Button size="md" variant="white" p={0} leftIcon={<VideoIcon />}>
           Library
         </Button>
       </Link>

@@ -1,8 +1,8 @@
+import { SearchInput } from ".";
 import { SearchCard } from "../Cards";
-import { SearchInput } from "./SearchInput";
 
 export default {
-  title: "Inputs"
+  title: "Search Inputs"
 };
 
 export const FilterVideos = () => (

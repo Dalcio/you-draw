@@ -1,9 +1,10 @@
-import { Button } from "@mantine/core";
+import { Box, Button } from "@mantine/core";
+
 import Link from "next/link";
 
 export function AuthBtn() {
   return (
-    <>
+    <Box>
       <Link href="signin">
         <Button
           size="md"
@@ -24,6 +25,6 @@ export function AuthBtn() {
           Sign up
         </Button>
       </Link>
-    </>
+    </Box>
   );
 }

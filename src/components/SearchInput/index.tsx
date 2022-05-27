@@ -1,11 +1,11 @@
-import { CloseButton, Modal, Stack, TextInput } from "@mantine/core";
+import { CloseButton, Modal, TextInput } from "@mantine/core";
 import { ChangeEventHandler, ReactChild, useState } from "react";
 import { Search } from "tabler-icons-react";
 
 type SearchInputProps = {
   onChange?: (text?: string) => void;
   value?: string;
-  children: ReactChild;
+  children?: ReactChild;
   title?: string;
   centtered?: boolean;
   placeholder: string;
@@ -36,7 +36,7 @@ export function SearchInput({
         withCloseButton={false}
         onClose={() => setIsFocused(false)}
         title={title}
-        size="min(340px, 100vw)"
+        size="min(380px, 100vw)"
         padding={0}
       >
         <TextInput
@@ -64,21 +64,17 @@ export function SearchInput({
         {children}
       </Modal>
       {!isFocused && (
-        <Stack
+        <TextInput
           style={{
-            flexDirection: "row",
             width: "100%",
-            maxWidth: 340
+            maxWidth: 380
           }}
-        >
-          <TextInput
-            value={value}
-            onFocus={() => setIsFocused(true)}
-            width="100%"
-            placeholder={placeholder}
-            icon={<Search />}
-          />
-        </Stack>
+          value={value}
+          onFocus={() => setIsFocused(true)}
+          width="100%"
+          placeholder={placeholder}
+          icon={<Search />}
+        />
       )}
     </>
   );

@@ -32,7 +32,7 @@ function SearchCardLoading({ shadow }: { shadow?: MantineShadow | undefined }) {
       p={0}
       sx={(theme) => ({
         width: "100%",
-        maxWidth: 340,
+        maxWidth: 380,
         "&:hover": {
           cursor: "pointer",
           opacity: 0.8
@@ -91,7 +91,7 @@ export function SearchCard({
           shadow={shadow}
           style={{
             width: "100%",
-            maxWidth: 340,
+            maxWidth: 380,
             marginTop: 0
           }}
           p={0}
