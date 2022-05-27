@@ -3,10 +3,13 @@ import { LibraryBtn } from "./LibraryBtn";
 import { SearchBtn } from "./SearchBtn";
 import { GoogleBtn } from "./GoogleBtn";
 import { SubmitBtn } from "./SubmitBtn";
+import { ColorSchemeToggle } from "./ColorSchemeToggle";
 
 export default {
   title: "Buttons"
 };
+
+export const ColorSchemeToggleButton = () => <ColorSchemeToggle />;
 
 export const AuthenticationButton = () => <AuthBtn />;
 

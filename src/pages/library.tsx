@@ -1,7 +1,18 @@
+import { Header } from "@components/Header";
+import { Logo } from "@components/Logo";
+import { Library } from "@components/Library";
+
+import Link from "next/link";
+
 export default function LibraryPage() {
   return (
     <>
-      <h1>Welcome to Library Page Page</h1>
+      <Header>
+        <Link href="/">
+          <Logo />
+        </Link>
+      </Header>
+      <Library />
     </>
   );
 }

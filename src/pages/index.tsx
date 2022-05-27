@@ -1,5 +1,8 @@
+import { AuthBtn, LibraryBtn } from "@components/Buttons";
 import { SearchCard, SearchCardProps } from "@components/Cards";
-import { HomeHeader, HomeIntro } from "@components/Home";
+import { HomeIntro } from "@components/Home";
+import { Header } from "@components/Header";
+import { Logo } from "@components/Logo";
 import { SearchInput } from "@components/SearchInput";
 import { Stack, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
@@ -7,6 +10,8 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
   const [videoUrl, setVideoUrl] = useState<string | undefined>("");
   const [foundVideo, setFoundVideo] = useState<SearchCardProps | undefined>({});
+
+  const isSigned = true;
 
   useEffect(() => {
     if (videoUrl) {
@@ -25,7 +30,10 @@ export default function HomePage() {
 
   return (
     <div>
-      <HomeHeader />
+      <Header>
+        <Logo />
+        {(isSigned && <LibraryBtn />) || <AuthBtn />}
+      </Header>
       <Stack
         align="center"
         p="lg"

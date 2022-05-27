@@ -1,2 +1,2 @@
-export { HomeHeader } from "./Header";
+export { Header } from "./Header";
 export { HomeIntro } from "./Intro";
