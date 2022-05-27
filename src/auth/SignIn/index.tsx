@@ -1,24 +1,14 @@
 import { GoogleBtn, SubmitBtn } from "@components/Buttons";
-import { Button, Input, PasswordInput, Stack, Text } from "@mantine/core";
-import { useForm } from "@mantine/hooks";
-import Link from "next/link";
+import { Button, PasswordInput, Stack, Text, TextInput } from "@mantine/core";
+import { useForm } from "@mantine/form";
 import { At, Lock } from "tabler-icons-react";
 
-export function SignIn() {
-  const form = useForm({
-    initialValues: {
-      email: "",
-      password: ""
-    },
+import Link from "next/link";
 
-    validationRules: {
-      // email: "/^S+@S+$/"
-    },
-    errorMessages: {
-      email: "Y",
-      password: ""
-    }
-  });
+import { sigInFormValidation } from "../validations";
+
+export function SignIn() {
+  const form = useForm(sigInFormValidation);
 
   const onSubmit = form.onSubmit((values) => {
     console.log(values);
@@ -34,12 +24,14 @@ export function SignIn() {
       </Text>
       <form onSubmit={onSubmit}>
         <Stack spacing="lg" style={{ width: "100%" }}>
-          <Input
+          <TextInput
+            required
             icon={<At />}
             placeholder="Your email"
             {...form.getInputProps("email")}
           />
           <PasswordInput
+            required
             icon={<Lock />}
             placeholder="Your password"
             {...form.getInputProps("password")}

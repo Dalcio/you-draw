@@ -1,25 +1,21 @@
 import { GoogleBtn, SubmitBtn } from "@components/Buttons";
-import { Button, Input, PasswordInput, Stack, Text } from "@mantine/core";
+import {
+  Button,
+  Input,
+  PasswordInput,
+  Stack,
+  Text,
+  TextInput
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { At, Lock } from "tabler-icons-react";
 
 import Link from "next/link";
 
-export function SignUp() {
-  const form = useForm({
-    initialValues: {
-      email: "",
-      password: ""
-    },
+import { sigUpFormValidation } from "../validations";
 
-    validationRules: {
-      // email: "/^S+@S+$/"
-    },
-    errorMessages: {
-      email: "Y",
-      password: ""
-    }
-  });
+export function SignUp() {
+  const form = useForm(sigUpFormValidation);
 
   const onSubmit = form.onSubmit((values) => {
     console.log(values);
@@ -35,20 +31,33 @@ export function SignUp() {
       </Text>
       <form onSubmit={onSubmit}>
         <Stack spacing="lg" style={{ width: "100%" }}>
-          <Input
+          <TextInput
+            required
+            placeholder="username"
+            {...form.getInputProps("username")}
+          />
+          <TextInput
+            required
             icon={<At />}
             placeholder="Your email"
             {...form.getInputProps("email")}
           />
           <PasswordInput
+            required
             icon={<Lock />}
             placeholder="Your password"
             {...form.getInputProps("password")}
           />
-          <SubmitBtn fullWidth label="Sign in" />
+          <PasswordInput
+            required
+            icon={<Lock />}
+            placeholder="Repeat password"
+            {...form.getInputProps("confirmPassword")}
+          />
+          <SubmitBtn fullWidth label="Sign up" />
           <Link href="signin">
             <Button fullWidth variant="subtle">
-              I have an account
+              I already have an account
             </Button>
           </Link>
         </Stack>
