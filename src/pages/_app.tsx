@@ -5,22 +5,24 @@ import {
 } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 import { getCookie, setCookies } from "cookies-next";
-import { GetServerSidePropsContext } from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
 import { AppProps } from "next/app";
-import { useState } from "react";
+import { ReactElement, ReactNode, useState } from "react";
 
 import Head from "next/head";
 
-// type NextPageWithLayout = NextPage & {
-//   getLayout?: (page: ReactElement) => ReactNode;
-// };
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
 type MyAppProps = AppProps & {
-  // Component: NextPageWithLayout;
+  Component: NextPageWithLayout;
   colorScheme: ColorScheme;
 };
 
 export default function MyApp({ Component, pageProps, ...props }: MyAppProps) {
+  const getLayout = Component.getLayout ?? ((page: ReactElement) => page);
+
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     props.colorScheme
   );
@@ -55,7 +57,7 @@ export default function MyApp({ Component, pageProps, ...props }: MyAppProps) {
           withNormalizeCSS
         >
           <NotificationsProvider>
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps} />)}
           </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>

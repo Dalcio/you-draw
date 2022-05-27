@@ -1,4 +1,4 @@
-import { SearchCard } from "@components/Cards";
+import { SearchCard } from "../Cards";
 import { SearchInput } from "./SearchInput";
 
 export default {

@@ -5,7 +5,7 @@
 import { useState } from "react";
 
 export default function HomePage() {
-  const [value, setValue] = useState<string | undefined>("");
+  const [value, setValue] = useState<string | undefined>("Something");
   return (
     <div>
       <h1>{value}</h1>

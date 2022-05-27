@@ -1,7 +1,11 @@
+import { AuthLayout } from "@auth/AuthLayout";
+import { SignUp } from "@auth/SignUp";
+import { ReactElement } from "react";
+
 export default function SignUpPage() {
-  return (
-    <>
-      <h1>Please Sign Up</h1>
-    </>
-  );
+  return <SignUp />;
 }
+
+SignUpPage.getLayout = (page: ReactElement) => (
+  <AuthLayout sign="Up">{page}</AuthLayout>
+);

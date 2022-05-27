@@ -1,8 +1,7 @@
 import { AuthBtn } from "./AuthBtn";
 import { LibraryBtn } from "./LibraryBtn";
 import { SearchBtn } from "./SearchBtn";
-import { SignInWithGoogleBtn } from "./SignInWithGoogleBtn";
-import { SignUpWithGoogleBtn } from "./SignUpWithGoogleBtn";
+import { GoogleBtn } from "./GoogleBtn";
 import { SubmitBtn } from "./SubmitBtn";
 
 export default {
@@ -13,9 +12,9 @@ export const AuthenticationButton = () => <AuthBtn />;
 
 export const LibraryButton = () => <LibraryBtn />;
 
-export const SignInWithGoogleButton = () => <SignInWithGoogleBtn />;
+export const SignInWithGoogleButton = () => <GoogleBtn sign="up" />;
 
-export const SignUpWithGoogleButton = () => <SignUpWithGoogleBtn />;
+export const SignUpWithGoogleButton = () => <GoogleBtn sign="up" />;
 
 export const SignInButton = () => <SubmitBtn label="Sign in" />;
 
