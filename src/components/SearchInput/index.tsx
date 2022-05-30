@@ -72,7 +72,7 @@ export function SearchInput({
               width: "100%",
               maxWidth: 380
             }}
-            value={value}
+            defaultValue={value}
             onFocus={() => setIsFocused(true)}
             width="100%"
             placeholder={placeholder}
