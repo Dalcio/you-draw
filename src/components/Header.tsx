@@ -16,9 +16,9 @@ export function Header({ children }: any) {
 
   return (
     <Stack
-      p="lg"
-      pb="sm"
-      pt="sm"
+      p="md"
+      pb="xs"
+      pt="xs"
       align="center"
       justify="space-between"
       className={classes.container}
