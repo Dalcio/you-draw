@@ -1,5 +1,5 @@
 {
-  "name": "you-draw",
+  "name": "you-draw-recent",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -37,7 +37,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "tabler-icons-react": "^1.48.0",
-    "uuidv4": "^6.2.13",
+    "uuid": "^8.3.2",
     "zod": "^3.17.3"
   },
   "devDependencies": {

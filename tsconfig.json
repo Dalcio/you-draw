@@ -25,6 +25,12 @@
       ],
       "@auth/*": [
         "src/auth/*"
+      ],
+      "@types/*": [
+        "src/types/*"
+      ],
+      "@types": [
+        "src/types"
       ]
     }
   },

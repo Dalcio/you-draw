@@ -1,11 +1,17 @@
-import { Button, CloseButton, Modal, TextInput } from "@mantine/core";
+import {
+  Button,
+  CloseButton,
+  Modal,
+  TextInput,
+  useMantineTheme
+} from "@mantine/core";
 import { ChangeEventHandler, ReactChild, useState } from "react";
-import { Search } from "tabler-icons-react";
+import { Plus, Search } from "tabler-icons-react";
 
 type SearchInputProps = {
-  onChange?: (text?: string) => void;
+  onChange?: (text: string) => void;
   value?: string;
-  children?: ReactChild;
+  children?: ReactChild | null;
   title?: string;
   centtered?: boolean;
   placeholder: string;
@@ -21,6 +27,7 @@ export function SearchInput({
   activeForm = "text-field",
   children
 }: SearchInputProps) {
+  const { breakpoints: bp } = useMantineTheme();
   const [isFocused, setIsFocused] = useState(false);
 
   const handleOnChage: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -38,7 +45,7 @@ export function SearchInput({
         withCloseButton={false}
         onClose={() => setIsFocused(false)}
         title={title}
-        size="min(380px, 100vw)"
+        size={`min(${bp.sm}px, 100%)`}
         padding={0}
       >
         <TextInput
@@ -65,20 +72,26 @@ export function SearchInput({
         />
         {children}
       </Modal>
-      {!isFocused &&
-        ((activeForm === "text-field" && (
-          <TextInput
-            style={{
-              width: "100%",
-              maxWidth: 380
-            }}
-            defaultValue={value}
-            onFocus={() => setIsFocused(true)}
-            width="100%"
-            placeholder={placeholder}
-            icon={<Search />}
-          />
-        )) || <Button>+</Button>)}
+      {activeForm === "text-field" ? (
+        <TextInput
+          style={{
+            width: "100%",
+            maxWidth: bp.sm
+          }}
+          defaultValue={value}
+          onClick={() => setIsFocused(true)}
+          placeholder={placeholder}
+          icon={<Search />}
+        />
+      ) : (
+        <Button
+          variant="subtle"
+          onClick={() => setIsFocused(true)}
+          leftIcon={<Plus />}
+        >
+          New
+        </Button>
+      )}
     </>
   );
 }
